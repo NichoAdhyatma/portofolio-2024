@@ -1,4 +1,5 @@
-import ProfileSection from "@/components/ProfileSection";
+import ProfileSection from "@/components/output/ProfileSection";
+
 
 export const getOutputCommand = (input: string) => {
   switch (input) {

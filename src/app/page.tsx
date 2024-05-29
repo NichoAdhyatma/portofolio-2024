@@ -5,7 +5,7 @@ import { KeyboardEvent, useState } from "react";
 import { InputShell } from "@/components/ui/input-shell";
 import { getOutputCommand } from "@/lib/get-output-command";
 import CloseButton from "@/components/CloseButton";
-import ProfileSection from "@/components/ProfileSection";
+import ProfileSection from "@/components/output/ProfileSection";
 
 const defaultValue: Command[] = [
   {
@@ -45,7 +45,7 @@ function App() {
 
   return (
     <div className="bg-gradient-to-br from-slate-300 to-slate-200 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center min-h-screen font-sans px-2">
-      <div className="bg-background rounded-lg w-full max-w-lg my-4">
+      <div className="bg-background rounded-lg w-full max-w-xl my-4 max-h-[80vh] overflow-auto">
         <CloseButton />
 
         <div className="px-4 pt-4 pb-2">
@@ -56,14 +56,9 @@ function App() {
               <div key={index} className="flex flex-col items-start gap-1">
                 <div className="flex gap-2 items-center">
                   <div className="font-bold">🚀~</div>
-                  <input
-                    type="text"
-                    className="outline-none disabled:bg-none"
-                    id="command"
-                    placeholder={index == 0 ? "Start typing here ..." : ""}
-                    value={c.input}
-                    disabled
-                  />
+                  <p className="text-sm" id="command">
+                    {c.input}
+                  </p>
                 </div>
 
                 {c.output === "profile" ? (
@@ -71,7 +66,7 @@ function App() {
                 ) : c.output ? (
                   <p className={`font-semibold text-start`}>{c.output}</p>
                 ) : (
-                  <p className="text-red-400">No commad found!</p>
+                  <p className="text-red-400">Command not found!</p>
                 )}
               </div>
             ))}
