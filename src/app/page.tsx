@@ -45,13 +45,13 @@ function App() {
 
   return (
     <div className="bg-gradient-to-br from-slate-300 to-slate-200 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center min-h-screen font-sans px-2">
-      <div className="bg-background rounded-lg w-full max-w-xl my-4 max-h-[80vh] overflow-auto">
+      <div className="bg-background rounded-lg w-full max-w-5xl my-4 max-h-[80vh] overflow-auto">
         <CloseButton />
 
         <div className="px-4 pt-4 pb-2">
           <p className="text-2xl font-bold mb-4">Nicho Portofolio ./</p>
 
-          <div id="terminal" className="flex flex-col items-start gap-4">
+          <div id="terminal" className="flex flex-col items-start gap-4 max-w-5xl w-full overflow-x-auto">
             {commands.map((c, index) => (
               <div key={index} className="flex flex-col items-start gap-1">
                 <div className="flex gap-2 items-center">
