@@ -76,7 +76,7 @@ export default function ProfileSection() {
           <ScrollBar orientation="horizontal" />
         </ScrollArea>
 
-        <p className="my-3 font-normal">
+        <p className="my-3 font-normal break-words whitespace-normal max-w-2xl w-full">
           Passionate <strong className="italic">Software Developer</strong> with
           a focus on mobile and web frontend development. Currently a
           6th-semester student at{" "}
