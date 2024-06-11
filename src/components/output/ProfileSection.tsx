@@ -45,6 +45,7 @@ export default function ProfileSection() {
   return (
     <div className="flex flex-col gap-2 max-w-[80vw] md:max-w-[100vw] w-full">
       <div>
+        <p className="text-2xl font-bold mb-2 underline">About Me</p>
         <h1 className="text-xl">Nicholaus Adhyatma Surya Kusuma</h1>
 
         <ScrollArea className="w-full whitespace-nowrap">

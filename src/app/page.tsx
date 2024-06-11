@@ -49,9 +49,8 @@ function App() {
 
   useEffect(() => {
     if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollIntoView(false);
-      scrollAreaRef.current.scrollTop = 200;
-    }
+      scrollAreaRef.current.scrollIntoView(true);
+    } 
   }, [commands]);
 
   return (
@@ -80,10 +79,10 @@ function App() {
                 </div>
 
                 {c.output === "profile" ? (
-                  <>
+                  <div className="flex flex-col gap-2 items-start">
                     <ProfileSection />
                     <Experience />
-                  </>
+                  </div>
                 ) : c.output ? (
                   <>{c.output}</>
                 ) : (
@@ -101,7 +100,7 @@ function App() {
                 value={currentCommand.input}
                 onChange={(e) => setCurrentCommand({ input: e.target.value })}
                 onKeyDown={handleKeyDown}
-                autoFocus
+               
               />
             </div>
             <ScrollBar orientation="vertical" />

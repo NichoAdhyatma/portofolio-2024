@@ -61,7 +61,7 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
 export default function Experience() {
   return (
     <div>
-      <p className="text-xl font-bold">Experience</p>
+      <p className="text-2xl underline font-bold">Professional Experience</p>
 
       <div className="p-4">
         <TimeLineWorkComponent
