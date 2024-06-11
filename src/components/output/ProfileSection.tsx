@@ -43,7 +43,7 @@ export default function ProfileSection() {
   const { toast } = useToast();
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 max-w-[80vw] md:max-w-[100vw] w-full">
       <div>
         <h1 className="text-xl">Nicholaus Adhyatma Surya Kusuma</h1>
 
@@ -76,7 +76,7 @@ export default function ProfileSection() {
           <ScrollBar orientation="horizontal" />
         </ScrollArea>
 
-        <p className="my-3 font-normal break-words whitespace-normal max-w-2xl w-full">
+        <p className="mt-3 font-normal break-words whitespace-normal">
           Passionate <strong className="italic">Software Developer</strong> with
           a focus on mobile and web frontend development. Currently a
           6th-semester student at{" "}
@@ -89,15 +89,6 @@ export default function ProfileSection() {
           environments with a strong track record of project completions and
           impactful contributions.
         </p>
-      </div>
-
-      <div className="mt-1">
-        <Link
-          href={`${process.env.NEXT_PUBLIC_BASE_URL}/my-cv.pdf`}
-          download={true}
-        >
-          <Button>Download CV</Button>
-        </Link>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
+import Link from "next/link";
+import { BuyMeACoffe } from "./BuyMeACoffee";
 import { ModeToggle } from "./ModeToggle";
-
+import { Button } from "./ui/button";
 
 export default function CloseButton() {
   return (
@@ -9,8 +11,19 @@ export default function CloseButton() {
         <div className="cursor-pointer bg-yellow-500 rounded-full w-4 h-4"></div>
         <div className="cursor-pointer bg-green-500 rounded-full w-4 h-4"></div>
       </div>
-     
-      <ModeToggle />
+
+      <div className="flex gap-2 items-center">
+        <Link
+          href={`${process.env.NEXT_PUBLIC_BASE_URL}/my-cv.pdf`}
+          download={true}
+          target="_blank"
+        
+        >
+          <Button size={'sm'} className="font-semibold">Download CV</Button>
+        </Link>
+
+        <ModeToggle />
+      </div>
     </div>
   );
 }

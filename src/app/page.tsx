@@ -1,15 +1,17 @@
 "use client";
 
 import { Command } from "@/core/types/command";
-import { KeyboardEvent, useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { InputShell } from "@/components/ui/input-shell";
 import { getOutputCommand } from "@/lib/get-output-command";
 import CloseButton from "@/components/CloseButton";
 import ProfileSection from "@/components/output/ProfileSection";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import Experience from "@/components/output/Experience";
 
 const defaultValue: Command[] = [
   {
-    input: "ls",
+    input: "about",
     output: "profile",
   },
 ];
@@ -21,6 +23,8 @@ function App() {
     input: "",
     output: "",
   });
+
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -43,17 +47,31 @@ function App() {
     setCurrentCommand({ input: "", output: "" });
   };
 
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollIntoView(false);
+      scrollAreaRef.current.scrollTop = 200;
+    }
+  }, [commands]);
+
   return (
     <div className="bg-gradient-to-br from-slate-300 to-slate-200 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center min-h-screen font-sans px-2">
-      <div className="bg-background rounded-lg w-full max-w-5xl my-4 max-h-[80vh] overflow-auto">
+      <div className="bg-background rounded-lg w-full max-w-5xl m-2">
         <CloseButton />
 
         <div className="px-4 pt-4 pb-2">
           <p className="text-2xl font-bold mb-4">Nicho Portofolio ./</p>
 
-          <div id="terminal" className="flex flex-col items-start gap-4 max-w-5xl w-full overflow-x-auto">
+          <ScrollArea
+            id="terminal"
+            className="flex flex-col items-start gap-4 h-fit max-h-[80vh]"
+          >
             {commands.map((c, index) => (
-              <div key={index} className="flex flex-col items-start gap-1">
+              <div
+                key={index}
+                ref={scrollAreaRef}
+                className="flex flex-col items-start gap-1"
+              >
                 <div className="flex gap-2 items-center">
                   <div className="font-bold">🚀~</div>
                   <p className="text-sm" id="command">
@@ -62,9 +80,12 @@ function App() {
                 </div>
 
                 {c.output === "profile" ? (
-                  <ProfileSection />
+                  <>
+                    <ProfileSection />
+                    <Experience />
+                  </>
                 ) : c.output ? (
-                  <p className={`font-semibold text-start`}>{c.output}</p>
+                  <>{c.output}</>
                 ) : (
                   <p className="text-red-400">Command not found!</p>
                 )}
@@ -83,7 +104,8 @@ function App() {
                 autoFocus
               />
             </div>
-          </div>
+            <ScrollBar orientation="vertical" />
+          </ScrollArea>
         </div>
       </div>
     </div>
