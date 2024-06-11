@@ -47,8 +47,8 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
         <p className="italic mt-1 text-sm font-semibold">{props.position}</p>
 
         <ul className="flex gap-3 flex-col text-sm font-normal">
-          {props.bullets.map((bullet) => (
-            <li className="flex items-start gap-1">
+          {props.bullets.map((bullet, index) => (
+            <li key={index * Math.random()} className="flex items-start gap-1">
               <div>🎯</div> <p>{bullet}</p>{" "}
             </li>
           ))}
@@ -61,7 +61,7 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
 export default function Experience() {
   return (
     <div>
-      <p>Experience</p>
+      <p className="text-xl font-bold">Experience</p>
 
       <div className="p-4">
         <TimeLineWorkComponent
