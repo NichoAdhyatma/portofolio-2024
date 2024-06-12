@@ -1,5 +1,6 @@
 import React from "react";
 import LogoAt from "@/assets/log-at.png";
+import LogoJadiUMKM from "@/assets/jadi_umkm.jpg";
 import Image from "next/image";
 
 type TimeLineWork = {
@@ -10,6 +11,11 @@ type TimeLineWork = {
   bullets: string[];
   imgSrc?: string;
   duration?: string;
+  lineHeight?: string;
+  imgProps?: {
+    width: number;
+    height: number;
+  };
 };
 
 const TimeLineWorkComponent = (props: TimeLineWork) => {
@@ -19,7 +25,9 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
         <div className="bg-primary rounded-full w-4 h-4 text-xs text-secondary text-center font-bold hover:cursor-pointer">
           {props.index}
         </div>
-        <div className="bg-primary w-[1px] h-72"></div>
+        <div
+          className={`bg-primary w-[1px] ${props.lineHeight || "h-72"}`}
+        ></div>
       </div>
 
       <div className="flex flex-col items-start gap-2">
@@ -29,8 +37,8 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
               <Image
                 src={props.imgSrc}
                 alt="company-logo"
-                width={40}
-                height={40}
+                width={props.imgProps ? props.imgProps.width : 40}
+                height={props.imgProps ? props.imgProps.height : 40}
               />
             )}
             <p className="text-sm">
@@ -97,6 +105,7 @@ export default function Experience() {
           company="Program Mahasiswa Wirausaha PENS 2023 - JadiUMKM.id "
           location={"Surabaya, Indonesia"}
           position={"Chief Technology Officer | Web Developer"}
+          imgSrc={LogoJadiUMKM.src}
           bullets={[
             "Directed a dynamic technology team, driving a 20% improvement in project efficiency and delivery time.",
             "Led a team to develop a full-stack web app platform for UMKM, sharpening my project management skills and culminating in a 30% boost in my ability to coordinate and lead complex software projects.",
@@ -104,6 +113,11 @@ export default function Experience() {
             "Implemented cutting-edge tools and best practices to streamline workflows and enhance team collaboration, leading to a measurable 25% increase in overall team productivity.",
           ]}
           duration="Jan 2024 - Jun 2024"
+          imgProps={{
+            width: 70,
+            height: 60,
+          }}
+          lineHeight="h-60"
         />
       </div>
     </div>
