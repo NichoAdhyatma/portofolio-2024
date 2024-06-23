@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { FiExternalLink } from "react-icons/fi";
 import NikoMoodLogo from "@/assets/niko-mood-logo.webp";
+import SeciNoteLogo from "@/assets/seci_note.png";
 import Image from "next/image";
 import Link from "next/link";
 import ReactLogo from "@/assets/react.png";
@@ -102,7 +103,7 @@ export function PortofolioCard({
 
 export default function Portofolio() {
   return (
-    <div className="flex flex-col gap-2 max-w-[80vw] md:max-w-[100vw] w-full my-4">
+    <div className="flex flex-col gap-5 max-w-[80vw] md:max-w-[100vw] w-full my-4">
       <p className="text-2xl font-bold mb-2 underline">Portofolio </p>
 
       <PortofolioCard
@@ -168,6 +169,72 @@ export default function Portofolio() {
             title: "Niko Mood Store Page",
             logo: <IoLogoGooglePlaystore size={22} />,
             href: "https://play.google.com/store/apps/details?id=com.agilepdbl.hl3_moodtracker&hl=en_US",
+          },
+        ]}
+      />
+      <PortofolioCard
+        title={"Seci Note"}
+        description={
+          "SeciNote is an online note-taking application equipped with AI features and text to voice conversion."
+        }
+        logo={
+          <Image
+            src={SeciNoteLogo}
+            alt="seci-note-logo"
+            width={50}
+            height={50}
+          />
+        }
+        techStack={[
+          {
+            title: "Frontend Web - React JS",
+            description: "Web app framework for building dynamic interfaces.",
+            logo: (
+              <Image src={ReactLogo} alt="react-logo" width={30} height={30} />
+            ),
+          },
+          {
+            title: "Frontend Mobile - Flutter",
+            description: "Toolkit for crafting cross-platform mobile apps.",
+            logo: (
+              <Image
+                src={FlutterLogo}
+                alt="flutter-logo"
+                width={35}
+                height={35}
+              />
+            ),
+          },
+          {
+            title: "Backend - Laravel",
+            description: "PHP framework for modern web applications.",
+            logo: (
+              <Image
+                src={LaravelLogo}
+                alt="laravel-logo"
+                width={30}
+                height={30}
+              />
+            ),
+          },
+          {
+            title: "Database - MySQL",
+            description: "Popular relational database management system.",
+            logo: (
+              <Image src={MySQLLogo} alt="mysql-logo" width={35} height={35} />
+            ),
+          },
+        ]}
+        links={[
+          {
+            title: "Seci Note Web App",
+            logo: <BsBrowserChrome size={20} />,
+            href: "https://notetaker-staging.agileteknik.com/landing-page",
+          },
+          {
+            title: "Seci Note Store Page",
+            logo: <IoLogoGooglePlaystore size={22} />,
+            href: "https://play.google.com/store/apps/details?id=com.agilepdbl.note_taker",
           },
         ]}
       />
