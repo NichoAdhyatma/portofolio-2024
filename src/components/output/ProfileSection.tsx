@@ -44,53 +44,51 @@ export default function ProfileSection() {
 
   return (
     <div className="flex flex-col gap-2 max-w-[80vw] md:max-w-[100vw] w-full">
-      <div>
-        <p className="text-2xl font-bold mb-2 underline">About Me</p>
-        <h1 className="text-xl">Nicholaus Adhyatma Surya Kusuma</h1>
+      <p className="text-2xl font-bold mb-2 underline">About Me</p>
+      <h1 className="text-xl">Nicholaus Adhyatma Surya Kusuma</h1>
 
-        <ScrollArea className="w-full whitespace-nowrap">
-          {contacts.map((contact, index) => (
-            <Button
-              key={index * Math.random()}
-              variant={"ghost"}
-              icon={contact.icon}
-              onClick={
-                !contact.href
-                  ? async () => {
-                      await navigator.clipboard.writeText(contact.label);
-                      toast({
-                        description: "Copied to clipboard",
-                      });
-                    }
-                  : () => {}
-              }
-            >
-              {contact.href ? (
-                <Link target="_blank" href={contact.href}>
-                  {contact.label}
-                </Link>
-              ) : (
-                <p>{contact.label}</p>
-              )}
-            </Button>
-          ))}
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
+      <ScrollArea className="w-full whitespace-nowrap">
+        {contacts.map((contact, index) => (
+          <Button
+            key={index * Math.random()}
+            variant={"ghost"}
+            icon={contact.icon}
+            onClick={
+              !contact.href
+                ? async () => {
+                    await navigator.clipboard.writeText(contact.label);
+                    toast({
+                      description: "Copied to clipboard",
+                    });
+                  }
+                : () => {}
+            }
+          >
+            {contact.href ? (
+              <Link target="_blank" href={contact.href}>
+                {contact.label}
+              </Link>
+            ) : (
+              <p>{contact.label}</p>
+            )}
+          </Button>
+        ))}
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
 
-        <p className="mt-3 font-normal break-words whitespace-normal">
-          Passionate <strong className="italic">Software Developer</strong> with
-          a focus on mobile and web frontend development. Currently a
-          6th-semester student at{" "}
-          <span className="font-bold italic">
-            Politeknik Elektronika Negeri Surabaya, majoring in Informatics
-            Engineering
-          </span>
-          . Proven ability to create captivating user interfaces and deliver
-          high-quality software solutions. Experienced in agile development
-          environments with a strong track record of project completions and
-          impactful contributions.
-        </p>
-      </div>
+      <p className="mt-3 font-normal text-sm break-words whitespace-normal">
+        Passionate <strong className="italic">Software Developer</strong> with a
+        focus on mobile and web frontend development. Currently a 6th-semester
+        student at{" "}
+        <span className="font-bold italic">
+          Politeknik Elektronika Negeri Surabaya, majoring in Informatics
+          Engineering
+        </span>
+        . Proven ability to create captivating user interfaces and deliver
+        high-quality software solutions. Experienced in agile development
+        environments with a strong track record of project completions and
+        impactful contributions.
+      </p>
     </div>
   );
 }

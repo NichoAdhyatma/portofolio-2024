@@ -32,7 +32,7 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
 
       <div className="flex flex-col items-start gap-2">
         <div className="flex justify-between items-center w-full">
-          <div className="flex gap-4 items-center">
+          <div className="flex flex-col sm:flex-row gap-4  items-start sm:items-center">
             {props.imgSrc && (
               <Image
                 src={props.imgSrc}
@@ -49,7 +49,7 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
             </p>
           </div>
 
-          <p className="text-sm">{props.duration}</p>
+          <p className="text-[10px] sm:text-sm">{props.duration}</p>
         </div>
 
         <p className="italic mt-1 text-sm font-semibold">{props.position}</p>

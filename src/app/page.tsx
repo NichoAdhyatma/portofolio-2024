@@ -8,6 +8,7 @@ import CloseButton from "@/components/CloseButton";
 import ProfileSection from "@/components/output/ProfileSection";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import Experience from "@/components/output/Experience";
+import Portofolio from "@/components/output/Portofolio";
 
 const defaultValue: Command[] = [
   {
@@ -81,6 +82,7 @@ function App() {
                 {c.output === "profile" ? (
                   <div className="flex flex-col gap-2 items-start">
                     <ProfileSection />
+                    <Portofolio/>
                     <Experience />
                   </div>
                 ) : c.output ? (
