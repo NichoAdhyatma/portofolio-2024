@@ -45,7 +45,8 @@ export default function ProfileSection() {
   return (
     <div className="flex flex-col gap-2 max-w-[80vw] md:max-w-[100vw] w-full">
       <p className="text-2xl font-bold mb-2 underline">About Me</p>
-      <h1 className="text-xl">Nicholaus Adhyatma Surya Kusuma</h1>
+      <h1 className="text-2xl font-bold">Nicholaus Adhyatma Surya Kusuma</h1>
+      <p className="text-md">Software Developer | Informatics Enginneering Student 👨‍💻</p>
 
       <ScrollArea className="w-full whitespace-nowrap">
         {contacts.map((contact, index) => (
@@ -76,7 +77,7 @@ export default function ProfileSection() {
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
 
-      <p className="mt-3 font-normal text-sm break-words whitespace-normal">
+      <p className="mt-2 font-normal pr-4 text-sm break-words whitespace-normal">
         Passionate <strong className="italic">Software Developer</strong> with a
         focus on mobile and web frontend development. Currently a 6th-semester
         student at{" "}
