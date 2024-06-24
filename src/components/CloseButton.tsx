@@ -14,7 +14,7 @@ export default function CloseButton() {
 
       <div className="flex gap-2 items-center">
         <Link
-          href={`${process.env.NEXT_PUBLIC_BASE_URL}/my-cv.pdf`}
+          href={`/my-cv.pdf`}
           download={true}
           target="_blank"
         
