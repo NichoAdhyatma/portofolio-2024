@@ -10,6 +10,9 @@ let snap = new MidtransClient.Snap({
 export async function POST(request: NextRequest) {
   const { id, productName, price, quantity, customer_details } =
     await request.json();
+
+  console.log(process.env.NEXT_MIDTRANS_SERVER_KEY);
+  
   
   let parameter = {
     item_details: {
