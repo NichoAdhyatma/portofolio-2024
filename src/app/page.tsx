@@ -27,6 +27,22 @@ function App() {
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
+    script.setAttribute(
+      "data-client-key",
+      process.env.NEXT_MIDTRANS_CLIENT_KEY!
+    );
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       event.preventDefault();

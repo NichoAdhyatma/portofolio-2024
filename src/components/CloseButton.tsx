@@ -22,6 +22,8 @@ export default function CloseButton() {
           <Button size={'sm'} className="font-semibold">Download CV</Button>
         </Link>
 
+        <BuyMeACoffe/>
+
         <ModeToggle />
       </div>
     </div>
