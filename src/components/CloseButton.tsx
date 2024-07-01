@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BuyMeACoffe } from "./BuyMeACoffee";
+import { BuyMeACoffee } from "./BuyMeACoffee";
 import { ModeToggle } from "./ModeToggle";
 import { Button } from "./ui/button";
 
@@ -22,7 +22,7 @@ export default function CloseButton() {
           <Button size={'sm'} className="font-semibold">Download CV</Button>
         </Link>
 
-        <BuyMeACoffe/>
+        <BuyMeACoffee/>
 
         <ModeToggle />
       </div>
