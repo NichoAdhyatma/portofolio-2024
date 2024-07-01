@@ -7,11 +7,11 @@ import LaravelLogo from "@/assets/laravel.svg";
 import MySQLLogo from "@/assets/mysql.png";
 import { BsBrowserChrome } from "react-icons/bs";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
-import { PortofolioCard } from "../PortofolioCard";
+import { PortofolioCard } from "@/components/molecules/PortofolioCard";
 
 export default function Portofolio() {
   return (
-    <div className="flex flex-col gap-5 max-w-[80vw] md:max-w-[100vw] w-full my-4">
+    <div className="flex flex-col gap-5 w-full my-4">
       <p className="text-2xl font-bold mb-2 underline">Portofolio </p>
 
       <PortofolioCard

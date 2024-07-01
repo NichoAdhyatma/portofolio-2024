@@ -1,15 +1,15 @@
 import React from "react";
 
 import Image from "next/image";
-import { Button } from "../ui/button";
+import { Button } from "@/components/atoms/button";
 import Link from "next/link";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import GmailIcon from "@/assets/gmail.png";
 import LinkedinIcon from "@/assets/linkedin.png";
 import GitHubLogoIcon from "@/assets/github.png";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea, ScrollBar } from "@/components/atoms/scroll-area";
 import { Contact } from "@/core/types/Contact";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/components/atoms/use-toast";
 
 const contacts: Contact[] = [
   {
@@ -43,7 +43,7 @@ export default function ProfileSection() {
   const { toast } = useToast();
 
   return (
-    <div className="flex flex-col gap-2 max-w-[80vw] md:max-w-[100vw] w-full">
+    <div className="flex flex-col gap-2 max-w-[90vw] md:max-w-[100vw] w-full">
       <p className="text-2xl font-bold mb-2 underline">About Me</p>
       <h1 className="text-2xl font-bold">Nicholaus Adhyatma Surya Kusuma</h1>
       <p className="text-md">Software Developer | Informatics Enginneering Student 👨‍💻</p>

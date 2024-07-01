@@ -1,4 +1,4 @@
-import {Button} from "@/components/ui/button";
+import {Button} from "@/components/atoms/button";
 import {
     Dialog,
     DialogContent,
@@ -7,14 +7,16 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/components/atoms/dialog";
 import {CiCoffeeCup} from "react-icons/ci";
 import {FormEvent, useRef, useState} from "react";
-import {Label} from "./ui/label";
-import {Input} from "./ui/input";
-import {useToast} from "@/components/ui/use-toast";
+import {Label} from "@/components/atoms/label";
+import {Input} from "@/components/atoms/input";
+import {useToast} from "@/components/atoms/use-toast";
 
-export function BuyMeACoffee() {
+export function BuyMeACoffee({variant = "outline"}: {
+    variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined
+}) {
     const formRef = useRef<HTMLFormElement>(null);
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
@@ -26,6 +28,7 @@ export function BuyMeACoffee() {
     }) => {
         setLoading(true);
         setOpen(false);
+
         try {
             const response = await fetch("/api/snap", {
                 method: "POST",
@@ -49,7 +52,10 @@ export function BuyMeACoffee() {
             if (data.token) {
                 window.snap.pay(data.token);
             } else {
-                console.error("Failed to get token");
+                toast({
+                    description: "Payment Failed",
+                    variant: "destructive",
+                })
             }
         } catch (error) {
             console.error("Error:", error);
@@ -80,7 +86,7 @@ export function BuyMeACoffee() {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline" icon={<CiCoffeeCup/>}>
+                <Button variant={variant} icon={<CiCoffeeCup/>}>
                     Buy Me a Coffee
                 </Button>
             </DialogTrigger>

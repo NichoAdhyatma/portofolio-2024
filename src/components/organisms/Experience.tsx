@@ -26,7 +26,7 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
           {props.index}
         </div>
         <div
-          className={`bg-primary w-[1px] ${props.lineHeight || "h-72"}`}
+          className={`bg-primary w-[1px] ${`md:${props.lineHeight}` || "md:h-72"}`}
         ></div>
       </div>
 
@@ -49,7 +49,7 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
             </p>
           </div>
 
-          <p className="text-[10px] sm:text-sm">{props.duration}</p>
+          <p className="text-[10px] hidden min-[496px]:block sm:text-sm">{props.duration}</p>
         </div>
 
         <p className="italic mt-1 text-sm font-semibold">{props.position}</p>
@@ -71,7 +71,7 @@ export default function Experience() {
     <div>
       <p className="text-2xl underline font-bold">Professional Experience</p>
 
-      <div className="p-4">
+      <div className="p-4 flex flex-col gap-4">
         <TimeLineWorkComponent
           index={1}
           company="Agile Teknik - PT. Maulidan Teknologi Kreatif"

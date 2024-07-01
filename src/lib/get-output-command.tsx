@@ -1,6 +1,6 @@
-import Experience from "@/components/output/Experience";
-import Portofolio from "@/components/output/Portofolio";
-import ProfileSection from "@/components/output/ProfileSection";
+import Experience from "@/components/organisms/Experience";
+import Portofolio from "@/components/organisms/Portofolio";
+import ProfileSection from "@/components/organisms/ProfileSection";
 
 
 export const getOutputCommand = (input: string) => {
