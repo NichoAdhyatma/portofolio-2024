@@ -9,17 +9,18 @@ import {
     DialogTrigger,
 } from "@/components/atoms/dialog";
 import {CiCoffeeCup} from "react-icons/ci";
-import {FormEvent, useRef, useState} from "react";
+import {Dispatch, FormEvent, SetStateAction, useRef, useState} from "react";
 import {Label} from "@/components/atoms/label";
 import {Input} from "@/components/atoms/input";
 import {useToast} from "@/components/atoms/use-toast";
 
-export function BuyMeACoffee({variant = "outline"}: {
-    variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined
+export function BuyMeACoffee({variant = "outline", open, setOpen}: {
+    variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined,
+    open?: boolean,
+    setOpen?: Dispatch<SetStateAction<boolean>>
 }) {
     const formRef = useRef<HTMLFormElement>(null);
     const [loading, setLoading] = useState(false);
-    const [open, setOpen] = useState(false);
     const {toast} = useToast();
 
     const handlePayment = async ({name, email}: {
@@ -27,7 +28,6 @@ export function BuyMeACoffee({variant = "outline"}: {
         email: string;
     }) => {
         setLoading(true);
-        setOpen(false);
 
         try {
             const response = await fetch("/api/snap", {
@@ -64,7 +64,7 @@ export function BuyMeACoffee({variant = "outline"}: {
         }
     };
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmitPayment = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         if (formRef.current) {
@@ -75,7 +75,7 @@ export function BuyMeACoffee({variant = "outline"}: {
             handlePayment({name, email}).then(_ => {
                 toast(
                     {
-                        description: "Payment successfully",
+                        description: "Payment process created!",
                         variant: "default"
                     }
                 )
@@ -90,7 +90,7 @@ export function BuyMeACoffee({variant = "outline"}: {
                     Buy Me a Coffee
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[425px] z-50">
                 <DialogHeader>
                     <DialogTitle>Fill Data</DialogTitle>
                     <DialogDescription>
@@ -98,7 +98,7 @@ export function BuyMeACoffee({variant = "outline"}: {
                     </DialogDescription>
                 </DialogHeader>
 
-                <form ref={formRef} onSubmit={handleSubmit} className="grid gap-4 py-4">
+                <form ref={formRef} onSubmit={handleSubmitPayment} className="grid gap-4 py-4">
                     <div className="grid gap-4">
                         <Label htmlFor="name">Name</Label>
                         <Input
@@ -120,9 +120,9 @@ export function BuyMeACoffee({variant = "outline"}: {
                         />
                     </div>
 
-                    <DialogFooter>
+                    <DialogFooter className={"mt-4"}>
                         <Button disabled={loading} type="submit">
-                            Pay Now
+                            Process Pay
                         </Button>
                     </DialogFooter>
                 </form>
