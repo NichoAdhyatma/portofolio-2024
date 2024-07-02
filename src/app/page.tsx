@@ -77,10 +77,9 @@ function App() {
                 <CloseButton/>
 
                 <div className="px-4 pt-4 pb-2">
-
                     <ScrollArea
                         id="terminal"
-                        className="flex flex-col items-start gap-4 h-fit max-h-screen sm:max-h-[85vh]"
+                        className="flex flex-col items-start gap-4 max-h-screen sm:max-h-[85vh]"
                     >
                         {commands.map((c, index) => (
                             <div
