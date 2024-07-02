@@ -77,8 +77,6 @@ function App() {
                 <CloseButton/>
 
                 <div className="px-4 pt-4 pb-2">
-                    <p className="text-2xl font-bold mb-4">Nicho Portofolio ./</p>
-
                     <ScrollArea
                         id="terminal"
                         className="flex flex-col items-start gap-4 h-fit max-h-[80vh]"

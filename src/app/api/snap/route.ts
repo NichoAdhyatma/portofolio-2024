@@ -11,9 +11,6 @@ export async function POST(request: NextRequest) {
   const { id, productName, price, quantity, customer_details } =
     await request.json();
 
-  console.log(process.env.NEXT_MIDTRANS_SERVER_KEY);
-  
-  
   let parameter = {
     item_details: {
       name: productName,
@@ -32,7 +29,6 @@ export async function POST(request: NextRequest) {
 
   try {
     const transaction = await snap.createTransaction(parameter);
-    console.log(transaction);
 
     return NextResponse.json(transaction, { status: 200 });
   } catch (error) {
