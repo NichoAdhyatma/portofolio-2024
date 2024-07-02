@@ -9,6 +9,7 @@ import ProfileSection from "@/components/organisms/ProfileSection";
 import {ScrollArea, ScrollBar} from "@/components/atoms/scroll-area";
 import Experience from "@/components/organisms/Experience";
 import Portofolio from "@/components/organisms/Portofolio";
+import SkillSection from "@/components/organisms/SkillSection";
 
 const defaultValue: Command[] = [
     {
@@ -88,6 +89,7 @@ function App() {
                                 {c.output === "profile" ? (
                                     <div className="flex flex-col gap-2 items-start">
                                         <ProfileSection/>
+                                        <SkillSection/>
                                         <Portofolio/>
                                         <Experience/>
                                     </div>
