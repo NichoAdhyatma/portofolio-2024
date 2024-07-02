@@ -1,7 +1,7 @@
 "use client";
 
 import {Command} from "@/core/types/command";
-import {KeyboardEvent, useEffect, useRef, useState} from "react";
+import {KeyboardEvent, useEffect, useState} from "react";
 import {InputShell} from "@/components/atoms/input-shell";
 import {getOutputCommand} from "@/lib/get-output-command";
 import CloseButton from "@/components/molecules/CloseButton";
@@ -24,8 +24,6 @@ function App() {
         input: "",
         output: "",
     });
-
-    const scrollAreaRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -64,12 +62,6 @@ function App() {
         setCurrentCommand({input: "", output: ""});
     };
 
-    useEffect(() => {
-        if (scrollAreaRef.current) {
-            scrollAreaRef.current.scrollIntoView(true);
-        }
-    }, [commands]);
-
     return (
         <div
             className="bg-gradient-to-br from-slate-300 to-slate-200 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center min-h-screen font-sans">
@@ -84,7 +76,6 @@ function App() {
                         {commands.map((c, index) => (
                             <div
                                 key={index}
-                                ref={scrollAreaRef}
                                 className="flex flex-col items-start gap-1"
                             >
                                 <div className="flex gap-2 items-center">
