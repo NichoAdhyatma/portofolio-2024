@@ -20,7 +20,7 @@ type TimeLineWork = {
 
 const TimeLineWorkComponent = (props: TimeLineWork) => {
     return (
-        <div className="rounded-lg border p-4 flex gap-4 items-start h-full">
+        <div className="rounded-xl border p-6 flex gap-4 items-start h-full">
             <div className="flex flex-col items-start gap-2">
                 <div className="flex justify-between items-center w-full">
                     <div className="flex flex-col sm:flex-row gap-4  items-start sm:items-center">
@@ -48,11 +48,11 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
                 <div className={"bg-gray-500 w-full h-[1px] my-2"}></div>
 
 
-                <ul className="flex gap-3 flex-col text-sm font-normal">
+                <ul className="flex gap-4 flex-col text-sm font-normal">
                     {props.bullets.map((bullet, index) => (
-                        <li key={index * Math.random()} className="flex items-start gap-1">
-                            <div>🎯</div>
-                            <p>{bullet}</p>{" "}
+                        <li key={index * Math.random()} className="flex items-start gap-1 bg-secondary p-2 rounded-xl">
+                            <span>➡️ {" "}</span>
+                            <p className={"ml-1"}>{bullet}</p>{" "}
                         </li>
                     ))}
                 </ul>
