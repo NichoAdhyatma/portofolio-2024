@@ -11,9 +11,9 @@ import Image from "next/image";
 
 export default function SkillSection() {
     return (
-        <div className={"my-4"}>
+        <div className={"my-4 w-full"}>
             <p className="text-2xl font-bold mb-2 underline">Skill </p>
-            <div className={"flex gap-2 flex-col md:flex-row items-center w-full"}>
+            <div className={"flex gap-2 flex-col sm:flex-row w-full min-h-[120px]"}>
                 <div className="p-4 border rounded-xl mt-4">
                     <p className={"mb-2"}>Tech Framework</p>
                     <div className="flex items-center gap-4">
