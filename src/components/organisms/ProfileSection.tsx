@@ -43,10 +43,10 @@ export default function ProfileSection() {
     const {toast} = useToast();
 
     return (
-        <div className="flex flex-col gap-4 max-w-[90vw] md:max-w-[100vw] w-full">
+        <div className="flex flex-col gap-4 max-w-[90vw] md:max-w-[100vw] my-4 w-full">
             <p className="text-2xl font-bold mb-2 underline">About Me</p>
 
-            <div className={"flex gap-4 items-center"}>
+            <div className={"flex flex-wrap gap-4 items-center"}>
                 <Avatar>
                     <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
                     <AvatarFallback>ME</AvatarFallback>

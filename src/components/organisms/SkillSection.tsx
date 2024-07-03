@@ -12,7 +12,7 @@ import Image from "next/image";
 export default function SkillSection() {
     return (
         <div className={"my-4 w-full"}>
-            <p className="text-2xl font-bold mb-2 underline">Skill </p>
+            <p className="text-2xl font-bold underline">Skill </p>
             <div className={"flex gap-2 flex-col sm:flex-row w-full min-h-[120px]"}>
                 <div className="p-4 border rounded-xl mt-4">
                     <p className={"mb-2"}>Tech Framework</p>

@@ -63,10 +63,10 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
 
 export default function Experience() {
     return (
-        <div>
+        <div className={"my-4"}>
             <p className="text-2xl underline font-bold">Professional Experience</p>
 
-            <div className="p-4 flex justify-start items-start flex-col gap-10">
+            <div className="flex mt-4 justify-start items-start flex-col gap-10">
                 <TimeLineWorkComponent
                     index={1}
                     company="Agile Teknik - PT. Maulidan Teknologi Kreatif"
