@@ -34,8 +34,8 @@ const TimeLineWorkComponent = (props: TimeLineWork) => {
                         )}
                         <p className="text-sm">
                             {props.company}{" "}
-                            <span className="text-gray-500 dark:text-gray-400 ">- {props.location}</span>
-                            <span className="text-[10px]">{props.duration}</span>
+                            <span className="text-gray-500 dark:text-gray-400 ">- {props.location}</span> {" "}
+                            <span className="text-[10px] sm:hidden">{props.duration}</span>
                         </p>
                     </div>
 
