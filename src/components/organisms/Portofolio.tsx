@@ -11,11 +11,23 @@ import {BsBrowserChrome} from "react-icons/bs";
 import {IoLogoGooglePlaystore} from "react-icons/io5";
 import {PortofolioCard} from "@/components/molecules/PortofolioCard";
 
+import NikoMoodBanner1 from "@/assets/niko-mood-banner-1.webp";
+import NikoMoodBanner2 from "@/assets/niko-mood-banner-2.webp";
+import NikoMoodBanner3 from "@/assets/niko-mood-banner-3.webp";
+import NikoMoodBanner4 from "@/assets/niko-mood-banner-4.webp";
+
+
 const portfolioItems = [
     {
         title: "Niko Mood",
         description: "Niko Mood is a mood tracking application that helps you monitor and record changes in your mood over time.",
         logo: <Image src={NikoMoodLogo} alt="niko-mood-logo" width={50} height={50}/>,
+        images: [
+            NikoMoodBanner1,
+            NikoMoodBanner2,
+            NikoMoodBanner3,
+            NikoMoodBanner4
+        ],
         techStack: [
             {
                 title: "Frontend Web - React JS",
@@ -145,6 +157,7 @@ export default function Portofolio() {
                         logo={item.logo}
                         techStack={item.techStack}
                         links={item.links}
+                        images={item.images}
                     />
                 ))}
             </div>

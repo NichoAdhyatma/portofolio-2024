@@ -8,24 +8,28 @@ import {
     CardTitle,
 } from "@/components/atoms/card";
 import Link from "next/link";
+import {PhotoProvider, PhotoView} from 'react-photo-view';
 import {FiExternalLink} from "react-icons/fi";
+import Image, {StaticImageData} from "next/image";
+import {ScrollArea, ScrollBar} from "@/components/atoms/scroll-area";
 
 type CardProps = React.ComponentProps<typeof Card>;
 
 interface PortofolioCardProps extends CardProps {
-    title: string;
-    logo?: ReactNode;
-    description: string;
+    title: string,
+    logo?: ReactNode,
+    description: string,
     links: {
         title: string;
         href: string;
         logo: ReactNode;
-    }[];
+    }[],
     techStack: {
         title: string;
         logo?: ReactNode;
         description?: string;
-    }[];
+    }[],
+    images?: StaticImageData[]
 }
 
 export function PortofolioCard({
@@ -35,6 +39,7 @@ export function PortofolioCard({
                                    links,
                                    techStack,
                                    logo,
+                                   images,
                                    ...props
                                }: PortofolioCardProps) {
     return (
@@ -47,8 +52,30 @@ export function PortofolioCard({
                         <CardDescription>{description}</CardDescription>
                     </div>
                 </div>
+
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
+                <CardTitle>Media</CardTitle>
+                <PhotoProvider>
+                    <ScrollArea className="max-w-full w-[80vw] h-fit whitespace-nowrap">
+                        <div className="flex flex-wrap w-max gap-4">
+                            {images && images.map((image, index) => (
+                                <PhotoView key={index} src={image.src}>
+                                    <div className="h-72 w-auto">
+                                        <Image
+                                            src={image}
+                                            alt={`image-${index}`}
+                                            className="rounded-xl object-cover h-full w-full"
+                                        />
+                                    </div>
+                                </PhotoView>
+                            ))}
+                        </div>
+                        <ScrollBar orientation="horizontal"/>
+                    </ScrollArea>
+
+
+                </PhotoProvider>
                 <CardTitle>Link</CardTitle>
                 {links.map((link, index) => (
                     <Link
@@ -70,6 +97,7 @@ export function PortofolioCard({
                     </Link>
 
                 ))}
+
 
                 <CardTitle>Tech Stack</CardTitle>
                 <div className="flex flex-col gap-4">

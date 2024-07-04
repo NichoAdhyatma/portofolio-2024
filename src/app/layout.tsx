@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fira_Code as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
+import 'react-photo-view/dist/react-photo-view.css';
 import { ThemeProvider } from "@/core/providers/theme-provider";
 import { Toaster } from "@/components/atoms/toaster";
 
