@@ -63,7 +63,7 @@ export function PortofolioCard({
             <CardContent className="flex flex-col gap-4">
                 <CardTitle>Media</CardTitle>
                 <PhotoProvider>
-                    <div className={"p-10 md:p-0"}>
+                    <div className={"px-10 md:px-0"}>
 
                     <Carousel
 
