@@ -11,7 +11,13 @@ import Link from "next/link";
 import {PhotoProvider, PhotoView} from 'react-photo-view';
 import {FiExternalLink} from "react-icons/fi";
 import Image, {StaticImageData} from "next/image";
-import {ScrollArea, ScrollBar} from "@/components/atoms/scroll-area";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/atoms/carousel"
 
 type CardProps = React.ComponentProps<typeof Card>;
 
@@ -57,23 +63,34 @@ export function PortofolioCard({
             <CardContent className="flex flex-col gap-4">
                 <CardTitle>Media</CardTitle>
                 <PhotoProvider>
-                    <ScrollArea className="max-w-full w-[80vw] h-fit whitespace-nowrap">
-                        <div className="flex flex-wrap w-max gap-4">
-                            {images && images.map((image, index) => (
-                                <PhotoView key={index} src={image.src}>
-                                    <div className="h-72 w-auto">
-                                        <Image
-                                            src={image}
-                                            alt={`image-${index}`}
-                                            className="rounded-xl object-cover h-full w-full"
-                                        />
-                                    </div>
-                                </PhotoView>
-                            ))}
-                        </div>
-                        <ScrollBar orientation="horizontal"/>
-                    </ScrollArea>
+                    <div className={"p-10 md:p-0"}>
 
+                    <Carousel
+
+                        opts={{
+                            align: "start",
+                        }}
+                        className="w-full min-[496px]:max-w-[300px] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mx-auto"
+                    >
+                        <CarouselContent>
+                            {images && images.map((image, index) => (
+                                <CarouselItem key={index} className="pl-6 md:basis-2/3">
+                                    <PhotoView key={index} src={image.src}>
+                                        <div className="h-52 md:h-60 lg:h-72 w-auto p-1">
+                                            <Image
+                                                src={image}
+                                                alt={`image-${index}`}
+                                                className="rounded-xl object-cover h-full w-full"
+                                            />
+                                        </div>
+                                    </PhotoView>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious/>
+                        <CarouselNext/>
+                    </Carousel>
+                    </div>
 
                 </PhotoProvider>
                 <CardTitle>Link</CardTitle>
