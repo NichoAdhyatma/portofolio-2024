@@ -74,7 +74,7 @@ export function PortofolioCard({
                     >
                         <CarouselContent>
                             {images && images.map((image, index) => (
-                                <CarouselItem key={index} className="pl-6 md:basis-2/3">
+                                <CarouselItem key={index} className="pl-6 basis-1/2 sm:basis-1/3">
                                     <PhotoView key={index} src={image.src}>
                                         <div className="h-52 md:h-60 lg:h-72 w-auto p-1">
                                             <Image
