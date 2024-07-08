@@ -64,9 +64,7 @@ export function PortofolioCard({
                 <CardTitle>Media</CardTitle>
                 <PhotoProvider>
                     <div className={"px-10 md:px-0"}>
-
                     <Carousel
-
                         opts={{
                             align: "start",
                         }}
@@ -74,9 +72,9 @@ export function PortofolioCard({
                     >
                         <CarouselContent>
                             {images && images.map((image, index) => (
-                                <CarouselItem key={index} className="pl-6 sm:basis-1/2 md:basis-1/3">
+                                <CarouselItem key={index} className="pl-4 sm:basis-1/2 md:basis-1/3">
                                     <PhotoView key={index} src={image.src}>
-                                        <div className="h-52 md:h-60 lg:h-72 w-auto p-1">
+                                        <div className="h-52 md:h-60 lg:h-72 w-auto">
                                             <Image
                                                 src={image}
                                                 alt={`image-${index}`}
