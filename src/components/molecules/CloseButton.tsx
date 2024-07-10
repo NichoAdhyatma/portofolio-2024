@@ -5,6 +5,7 @@ import DownloadCV from "@/components/molecules/DownloadCV";
 
 
 export default function CloseButton() {
+
     return (
         <div className="flex gap-2 justify-between items-center bg-secondary p-4 rounded-t-lg sticky z-50 w-full top-0">
             <div className="flex gap-2 items-center">
@@ -28,7 +29,6 @@ export default function CloseButton() {
                 <BuyMeACoffee/>
 
                 <ModeToggle/>
-
             </div>
 
 

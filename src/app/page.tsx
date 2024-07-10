@@ -28,7 +28,7 @@ function App() {
 
     useEffect(() => {
         const script = document.createElement("script");
-        script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
+        script.src = `${process.env.NEXT_PUBLIC_MIDTRANS_API_URL}/snap/snap.js`;
         script.setAttribute(
             "data-client-key",
             process.env.NEXT_MIDTRANS_CLIENT_KEY!

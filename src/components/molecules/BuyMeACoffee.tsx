@@ -16,7 +16,7 @@ import {
     FormMessage,
 } from "@/components/atoms/form"
 import {CiCoffeeCup} from "react-icons/ci";
-import {Dispatch, SetStateAction, useRef, useState} from "react";
+import {useRef, useState} from "react";
 import {Input} from "@/components/atoms/input";
 import {useToast} from "@/components/atoms/use-toast";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -38,13 +38,13 @@ const paymentSchema = z.object({
     price: z.string(),
 });
 
-export function BuyMeACoffee({variant = "outline", open, setOpen}: {
+export function BuyMeACoffee({variant = "outline"}: {
     variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined,
-    open?: boolean,
-    setOpen?: Dispatch<SetStateAction<boolean>>
+
 }) {
     const formRef = useRef<HTMLFormElement>(null);
     const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState(false);
     const form = useForm<z.infer<typeof paymentSchema>>(
         {
             resolver: zodResolver(paymentSchema),
@@ -79,6 +79,10 @@ export function BuyMeACoffee({variant = "outline", open, setOpen}: {
 
             const data = await response.json();
 
+            setOpen(false);
+
+            await new Promise(resolve => setTimeout(resolve, 300));
+
             if (data.token) {
                 window.snap.pay(data.token);
             } else {
@@ -88,7 +92,10 @@ export function BuyMeACoffee({variant = "outline", open, setOpen}: {
                 })
             }
         } catch (error) {
-            console.error("Error:", error);
+            toast({
+                description: `${error}`,
+                variant: "destructive"
+            })
         } finally {
             setLoading(false);
         }
