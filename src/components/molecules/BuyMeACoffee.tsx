@@ -180,6 +180,7 @@ export function BuyMeACoffee({variant = "outline", open, setOpen}: {
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
+                                                <SelectItem value="500">Extra Small (XS) (Rp. 500)</SelectItem>
                                                 <SelectItem value="5000">Small (S) (Rp. 5000)</SelectItem>
                                                 <SelectItem value="15000">Medium (M) (Rp. 15.000)</SelectItem>
                                                 <SelectItem value="25000">Large (L) (Rp. 25.000)</SelectItem>
