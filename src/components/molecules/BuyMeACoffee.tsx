@@ -16,7 +16,7 @@ import {
     FormMessage,
 } from "@/components/atoms/form"
 import {CiCoffeeCup} from "react-icons/ci";
-import {Dispatch, SetStateAction, useRef, useState} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import {Input} from "@/components/atoms/input";
 import {useToast} from "@/components/atoms/use-toast";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -33,9 +33,9 @@ import {useForm} from "react-hook-form";
 import {z} from "zod";
 
 const paymentSchema = z.object({
-    name: z.string().min(4),
-    email: z.string().email(),
-    price: z.string(),
+    name: z.string().min(4, {message: "Name must be at least 4 characters."}),
+    email: z.string().email({message: "Invalid email address"}),
+    price: z.string({message: "Price must be a number"}),
 });
 
 export function BuyMeACoffee({variant = "outline", open, setOpen}: {
@@ -44,7 +44,6 @@ export function BuyMeACoffee({variant = "outline", open, setOpen}: {
     setOpen: Dispatch<SetStateAction<boolean>>;
 
 }) {
-    const formRef = useRef<HTMLFormElement>(null);
     const [loading, setLoading] = useState(false);
     const form = useForm<z.infer<typeof paymentSchema>>(
         {
@@ -131,8 +130,7 @@ export function BuyMeACoffee({variant = "outline", open, setOpen}: {
                 </DialogHeader>
 
                 <Form {...form}>
-                    <form ref={formRef} onSubmit={form.handleSubmit(handleSubmitPayment)} className="grid gap-4 py-2">
-
+                    <form onSubmit={form.handleSubmit(handleSubmitPayment)} className="grid gap-4 py-2">
                         <FormField
                             render={
                                 ({field}) =>

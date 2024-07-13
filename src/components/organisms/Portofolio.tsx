@@ -1,8 +1,6 @@
 import {PortofolioCard} from "@/components/molecules/PortofolioCard";
 import {portfolioItems} from "@/core/data/portofolioItems";
 
-
-
 export default function Portofolio() {
     return (
         <div className={"my-4"}>

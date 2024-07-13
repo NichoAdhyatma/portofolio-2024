@@ -10,6 +10,7 @@ import {ScrollArea, ScrollBar} from "@/components/atoms/scroll-area";
 import Experience from "@/components/organisms/Experience";
 import Portofolio from "@/components/organisms/Portofolio";
 import SkillSection from "@/components/organisms/SkillSection";
+import emailjs from "@emailjs/browser";
 
 const defaultValue: Command[] = [
     {
@@ -35,6 +36,9 @@ function App() {
         );
         script.async = true;
         document.body.appendChild(script);
+        emailjs.init({
+            publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+        });
 
         return () => {
             document.body.removeChild(script);

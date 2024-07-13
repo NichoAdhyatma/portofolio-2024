@@ -10,6 +10,7 @@ import GitHubLogoIcon from "@/assets/github.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/atoms/avatar"
 import {Contact} from "@/core/types/Contact";
 import {useToast} from "@/components/atoms/use-toast";
+import {ContactMe} from "@/components/molecules/ContactMe";
 
 const contacts: Contact[] = [
     {
@@ -96,7 +97,7 @@ export default function ProfileSection() {
                 applications using various technologies.
             </p>
 
-
+            <ContactMe />
         </div>
     );
 }
