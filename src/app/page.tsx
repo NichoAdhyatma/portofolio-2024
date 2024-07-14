@@ -36,6 +36,7 @@ function App() {
         );
         script.async = true;
         document.body.appendChild(script);
+
         emailjs.init({
             publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
         });

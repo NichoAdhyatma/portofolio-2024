@@ -70,10 +70,10 @@ export function ContactMe() {
                 reply_to: email,
                 message,
             }).then(
-            (response) => {
+            (_) => {
                 toast({
                     title: "Success",
-                    description: response.text,
+                    description: "Message sent successfully",
                 });
             },
             (error) => {
