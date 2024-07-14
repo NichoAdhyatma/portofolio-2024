@@ -15,7 +15,7 @@ import Image from "next/image";
 import {useTheme} from "next-themes";
 
 export default function SkillSection() {
-    const {theme} = useTheme();
+    const {resolvedTheme} = useTheme();
     return (
         <div className={"my-4 w-full"}>
             <p className="text-2xl font-bold underline">Skill </p>
@@ -53,10 +53,10 @@ export default function SkillSection() {
                 <div className="p-4 px-5 border rounded-xl mt-4">
                     <p className={"mb-2"}>Services</p>
                     <div className="flex items-center gap-x-8">
-                        <Image src={theme == 'dark' ? FirebaseLogoDark : FirebaseLogo} width={45} height={45}
+                        <Image src={resolvedTheme == 'dark' ? FirebaseLogoDark : FirebaseLogo} width={45} height={45}
                                alt="firebase-logo"
                                className={"hover:cursor-pointer hover:scale-110"}/>
-                        <Image src={theme == 'dark' ? SupabaseLogoDark : SupabaseLogo} width={75} height={75}
+                        <Image src={resolvedTheme == 'dark' ? SupabaseLogoDark : SupabaseLogo} width={75} height={75}
                                className={"hover:cursor-pointer"}
                                alt="supabase-logo"/>
 
