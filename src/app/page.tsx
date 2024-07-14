@@ -6,13 +6,13 @@ import {InputShell} from "@/components/atoms/input-shell";
 import {getOutputCommand} from "@/lib/get-output-command";
 import CloseButton from "@/components/molecules/CloseButton";
 import ProfileSection from "@/components/organisms/ProfileSection";
-import {ScrollArea, ScrollBar} from "@/components/atoms/scroll-area";
 import Experience from "@/components/organisms/Experience";
 import Portofolio from "@/components/organisms/Portofolio";
 import SkillSection from "@/components/organisms/SkillSection";
 import emailjs from "@emailjs/browser";
 import {Button} from "@/components/atoms/button";
 import {PiMouseScrollFill} from "react-icons/pi";
+import {motion, useScroll} from "framer-motion";
 
 const defaultValue: Command[] = [
     {
@@ -30,6 +30,12 @@ function App() {
     });
 
     const bottomRef = useRef<HTMLDivElement>(null);
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    const {scrollYProgress} = useScroll({
+        container: scrollRef,
+        target: scrollRef
+    });
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -90,14 +96,34 @@ function App() {
             <Button onClick={() => handleScrollButton()} className={"fixed bottom-5 right-5 z-50"}>
                 <PiMouseScrollFill size={25}/>
             </Button>
+
             <div className="bg-background rounded-lg w-full max-w-4xl">
                 <CloseButton/>
 
+
+                <motion.div
+                    className="bg-primary progress-bar"
+                    style={{scaleX: scrollYProgress as unknown as number}}
+                />
                 <div className="px-5 sm:px-8 pt-4 pb-2">
-                    <ScrollArea
+
+                    <div
                         id="terminal"
-                        className="flex flex-col items-start gap-4 max-h-screen sm:max-h-[85vh]"
+                        ref={scrollRef}
+                        className="flex flex-col items-start overflow-y-scroll gap-4 max-h-screen sm:max-h-[85vh]"
                     >
+                        <svg id="progress" viewBox="0 0 100 100"
+                             className={"fixed hidden md:block w-12 top-5 right-5 z-50"}>
+                            <circle cx="50" cy="50" r="30" pathLength="1" className="bg"/>
+                            <motion.circle
+                                cx="50"
+                                cy="50"
+                                r="30"
+                                pathLength="1"
+                                className="stroke-primary"
+                                style={{pathLength: scrollYProgress}}
+                            />
+                        </svg>
                         {commands.map((c, index) => (
                             <div
                                 key={index}
@@ -141,8 +167,8 @@ function App() {
 
                         <div ref={bottomRef}/>
 
-                        <ScrollBar orientation="vertical"/>
-                    </ScrollArea>
+
+                    </div>
                 </div>
             </div>
         </div>
