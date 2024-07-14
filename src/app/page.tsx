@@ -1,7 +1,7 @@
 "use client";
 
 import {Command} from "@/core/types/command";
-import {KeyboardEvent, useEffect, useState} from "react";
+import {KeyboardEvent, useEffect, useRef, useState} from "react";
 import {InputShell} from "@/components/atoms/input-shell";
 import {getOutputCommand} from "@/lib/get-output-command";
 import CloseButton from "@/components/molecules/CloseButton";
@@ -11,6 +11,8 @@ import Experience from "@/components/organisms/Experience";
 import Portofolio from "@/components/organisms/Portofolio";
 import SkillSection from "@/components/organisms/SkillSection";
 import emailjs from "@emailjs/browser";
+import {Button} from "@/components/atoms/button";
+import {PiMouseScrollFill} from "react-icons/pi";
 
 const defaultValue: Command[] = [
     {
@@ -26,6 +28,8 @@ function App() {
         input: "",
         output: "",
     });
+
+    const bottomRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -45,6 +49,12 @@ function App() {
             document.body.removeChild(script);
         };
     }, []);
+
+    useEffect(() => {
+        if (bottomRef.current && commands.length > 1) {
+            bottomRef.current.scrollIntoView({behavior: 'smooth'});
+        }
+    }, [commands]);
 
 
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -68,10 +78,19 @@ function App() {
         setCurrentCommand({input: "", output: ""});
     };
 
+    const handleScrollButton = () => {
+        if (bottomRef.current) {
+            bottomRef.current.scrollIntoView({behavior: 'smooth'});
+        }
+    };
+
     return (
         <div
             className="bg-gradient-to-br from-slate-300 to-slate-200 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center min-h-screen font-sans">
-            <div className="bg-background rounded-lg w-full max-w-5xl">
+            <Button onClick={() => handleScrollButton()} className={"fixed bottom-5 right-5 z-50"}>
+                <PiMouseScrollFill size={25}/>
+            </Button>
+            <div className="bg-background rounded-lg w-full max-w-4xl">
                 <CloseButton/>
 
                 <div className="px-5 sm:px-8 pt-4 pb-2">
@@ -106,6 +125,7 @@ function App() {
                             </div>
                         ))}
 
+
                         <div className="flex gap-1 items-center mb-2 w-full">
                             <p>🚀</p>
                             <InputShell
@@ -118,6 +138,9 @@ function App() {
 
                             />
                         </div>
+
+                        <div ref={bottomRef}/>
+
                         <ScrollBar orientation="vertical"/>
                     </ScrollArea>
                 </div>
