@@ -98,13 +98,9 @@ function App() {
             </Button>
 
             <div className="bg-background rounded-lg w-full max-w-4xl">
-                <CloseButton/>
+                <CloseButton scrollProgress={scrollYProgress}/>
 
 
-                <motion.div
-                    className="bg-primary progress-bar"
-                    style={{scaleX: scrollYProgress as unknown as number}}
-                />
                 <div className="px-5 sm:px-8 pt-4 pb-2">
 
                     <div
