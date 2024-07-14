@@ -174,7 +174,7 @@ export function BuyMeACoffee({variant = "outline", open, setOpen}: {
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl>
                                                 <SelectTrigger>
-                                                    <SelectValue placeholder="Select a Cofee Size"/>
+                                                    <SelectValue placeholder="Select a Coffee Size"/>
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>

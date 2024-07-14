@@ -183,7 +183,7 @@ export const portfolioItems = [
         title: "Seci Map",
         description: "SECI Map provides an effortless means of structuring ideas and information with the help of " +
             "interactive mind maps that can be conveniently shared within teams",
-        logo: <div className={"bg-white rounded-2xl p-3"}>
+        logo: <div className={"bg-white w-fit rounded-2xl p-3"}>
             <Image src={SeciMapLogo} alt="secimap-logo" width={70} height={70}/>
         </div>,
         images: [
