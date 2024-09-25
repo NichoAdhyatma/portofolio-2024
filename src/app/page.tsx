@@ -100,9 +100,7 @@ function App() {
             <div className="bg-background rounded-lg w-full max-w-4xl">
                 <CloseButton scrollProgress={scrollYProgress}/>
 
-
                 <div className="px-5 sm:px-8 pt-4 pb-2">
-
                     <div
                         id="terminal"
                         ref={scrollRef}
@@ -147,7 +145,6 @@ function App() {
                             </div>
                         ))}
 
-
                         <div className="flex gap-1 items-center mb-2 w-full">
                             <p>🚀</p>
                             <InputShell
@@ -162,8 +159,6 @@ function App() {
                         </div>
 
                         <div ref={bottomRef}/>
-
-
                     </div>
                 </div>
             </div>
