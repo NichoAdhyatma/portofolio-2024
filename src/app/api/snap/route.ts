@@ -8,27 +8,11 @@ let snap = new MidtransClient.Snap({
 });
 
 export async function POST(request: NextRequest) {
-  const { id, productName, price, quantity, customer_details } =
-    await request.json();
-
-  let parameter = {
-    item_details: {
-      name: productName,
-      price: price,
-      quantity: quantity,
-    },
-    transaction_details: {
-      order_id: id,
-      gross_amount: price * quantity,
-    },
-    customer_details: {
-      first_name: customer_details.first_name,
-      email: customer_details.email,
-    },
-  };
-
   try {
-    const transaction = await snap.createTransaction(parameter);
+    const requestBody =
+        await request.json() as PaymentData;
+
+    const transaction = await snap.createTransaction(requestBody);
 
     return NextResponse.json(transaction, { status: 200 });
   } catch (error) {
