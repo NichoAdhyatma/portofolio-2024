@@ -9,9 +9,12 @@ let snap = new MidtransClient.Snap({
 
 export async function POST(request: NextRequest) {
     try {
-        const result = await snap.transaction.notification(await request.json());
+        const requestBody =
+            await request.json() as PaymentData;
 
-        console.log("Transaction notification result:", result);
+        console.log("Transaction notification request:", requestBody);
+        const result = await snap.transaction.notification(requestBody);
+
 
         return NextResponse.json(result, { status: 200 });
     } catch (error) {

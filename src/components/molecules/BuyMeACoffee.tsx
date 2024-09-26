@@ -66,15 +66,23 @@ export function BuyMeACoffee({variant = "outline", open, setOpen}: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    id: `order-${Date.now()}`,
-                    productName: "Buy me a coffee",
-                    price: Number.parseInt(price),
-                    quantity: 1,
+                    transaction_details: {
+                        order_id: `order-${Date.now()}`,
+                        gross_amount: Number.parseInt(price),
+                    },
+                    item_details: [
+                        {
+                            id: `item-${Date.now()}`,
+                            price: Number.parseInt(price),
+                            quantity: 1,
+                            name: "Buy me a coffee",
+                        }
+                    ],
                     customer_details: {
                         first_name: name,
                         email: email,
                     },
-                }),
+                } as PaymentData),
             });
 
             const data = await response.json();
