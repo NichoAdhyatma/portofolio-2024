@@ -17,6 +17,9 @@ type PaymentData = {
     bank_transfer?: {
         bank?: string | null;
     } | null;
+    qris?: {
+        acquirer?: string | null;
+    } | null;
     customer_details?: {
         first_name?: string | null;
         last_name?: string | null;
